@@ -1,9 +1,9 @@
-# Your Project's Title...
+# Amazon - Alexa
 Your project's description...
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--amazon-alexa--adobedevxsc.aem.page/
+- Live: https://main--amazon-alexa--adobedevxsc.aem.live/
 
 ## Installation
 
