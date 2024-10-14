@@ -177,13 +177,10 @@ export default async function decorate(block) {
 
   //add custom input element in nav-brand element
   const inputContainer = navBrand.querySelector('.default-content-wrapper p:nth-child(2)');
-  console.log("inputContainer: ", inputContainer);
   const inputSearchEl = document.createElement('input');
   inputSearchEl.type = 'text';
   inputSearchEl.placeholder = 'Search Alexa Developer help';
-  console.log("inputSearchEl: ", inputSearchEl);
   inputContainer.prepend(inputSearchEl);
-
 
   block.append(navWrapper);
 }

@@ -17,4 +17,12 @@ export default async function decorate(block) {
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.append(footer);
+
+  const sections = block.querySelectorAll('.section');
+  const numberWords = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+  sections.forEach((section, i) => {
+    const word = numberWords[i]; // Convert index to word
+    section.classList.add(word);
+  });
 }
