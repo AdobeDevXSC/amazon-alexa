@@ -146,6 +146,7 @@ export default async function decorate(block) {
     });
   }
 
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -162,5 +163,19 @@ export default async function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
+
+  // relocate .nav-brand element 
+  navWrapper.prepend(navBrand);
+
+  //add custom input element in nav-brand element
+  const inputContainer = navBrand.querySelector('.default-content-wrapper p:nth-child(2)');
+  console.log("inputContainer: ", inputContainer);
+  const inputSearchEl = document.createElement('input');
+  inputSearchEl.type = 'text';
+  inputSearchEl.placeholder = 'Search Alexa Developer help';
+  console.log("inputSearchEl: ", inputSearchEl);
+  inputContainer.prepend(inputSearchEl);
+
+
   block.append(navWrapper);
 }
