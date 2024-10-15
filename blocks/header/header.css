@@ -244,9 +244,13 @@ header .nav-brand .default-content-wrapper p:nth-child(3) span img {
     max-width: 460px;
   }
 
+  header .nav-brand .default-content-wrapper p:nth-child(3) {
+    gap: 0;
+  }
+
   header .nav-brand .default-content-wrapper p:nth-child(3) a {
     margin-right: 40px;
-   }
+  }
 }
 
 /* sections */

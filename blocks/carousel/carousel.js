@@ -109,7 +109,6 @@ export default async function decorate(block) {
 
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = block.querySelectorAll(':scope > div');
-  const isSingleSlide = isJSONCarousel.length < 2 && rows.length < 2;
   const placeholders = await fetchPlaceholders();
 
   block.setAttribute('role', 'region');
@@ -123,6 +122,7 @@ export default async function decorate(block) {
   block.prepend(slidesWrapper);
 
   let slideIndicators;
+  const isSingleSlide = false; //hardcoded temporarily
   if (!isSingleSlide) {
       const slideIndicatorsNav = document.createElement('nav');
       slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
@@ -134,62 +134,43 @@ export default async function decorate(block) {
       const slideNavButtons = document.createElement('div');
       slideNavButtons.classList.add('carousel-navigation-buttons');
       slideNavButtons.innerHTML = `
-    <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
-    <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
-  `;
+            <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+            <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
+        `;
 
       container.append(slideNavButtons);
   }
-
-  const isImageCards = block.classList.contains('image-cards'); // not relevant
 
   if (isJSONCarousel) {
       const link = block.querySelector('a');
       const cardData = await fetchJson(link);
 
-      console.log("cardData: ", cardData);
-
       cardData.forEach((card, idx) => {
-          const picture = createOptimizedPicture(card.image, card.title, false, [{
-              width: 320
-          }]);
-          picture.lastElementChild.width = '320';
-          picture.lastElementChild.height = '180';
+          const optBackgroundImage = createOptimizedPicture(card.backgroundImage, card.title, false, [{ width: 1800 }]);
+          const optColumnImage = createOptimizedPicture(card.columnImage, card.title, false, [{ width: 640 }]);
 
           const createdSlide = document.createElement('li');
           createdSlide.dataset.slideIndex = idx;
           createdSlide.setAttribute('id', `carousel-${carouselId}-slide-${idx}`);
           createdSlide.classList.add('carousel-slide');
-          if (isImageCards) {
-              createdSlide.innerHTML = `
-      <div class="cards-card-image">
-        ${picture.outerHTML}
-      </div>
-      <a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}">
-        <div class="cards-card-body">
-          <h5>${card.title}</h5>
-          <p>${card.copy}</p>
-        </div>
-      </a>`
-          } else {
-              createdSlide.innerHTML = `
-      <div class="cards-card-image">
-        ${picture.outerHTML}
-      </div>
-      <div class="cards-card-body">
-        <h5>${card.title}</h5>
-    <p>${card.copy}</p>
-        <p class="button-container">
-          <a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
-            Read More 
-            <span class="card-arrow">
-              <img class="icon" src="/icons/chevron-down.svg" />
-            </span>
-          </a>
-        </p>
-      </div>
-    `;
-          }
+          
+          createdSlide.innerHTML = `
+            <div class="slide">
+                <div class="slide-bg-image">
+                    ${optBackgroundImage.outerHTML}
+                </div>
+                <div class="slide-content-container">
+                    <div class="slide-content">
+                        <h2>${card.title}</h2>
+                        <p>${card.description}</p>
+                        <a class="button ${card.ctaColor}" href="${card.ctaLink}" aria-label="${card.title}" title="${card.title}">${card.ctaTitle}</a>
+                    </div>
+                    <div class="slide-image">
+                        ${optColumnImage.outerHTML}
+                    </div>
+                </div>
+            </div>
+            `;
 
           const labeledBy = createdSlide.querySelector('h1, h2, h3, h4, h5, h6');
           if (labeledBy) {
@@ -223,6 +204,9 @@ export default async function decorate(block) {
   }
   container.append(slidesWrapper);
   block.prepend(container);
+
+  const divWithLink = isJSONCarousel.parentElement.parentElement.parentElement;
+  divWithLink.remove();
 
   if (!isSingleSlide) {
       bindEvents(block);

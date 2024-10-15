@@ -38,6 +38,9 @@
 
   /* nav height */
   --nav-height: 48px;
+
+  /* global max-width */
+  --max-width: 1400px;
 }
 
 /* fallback fonts */
