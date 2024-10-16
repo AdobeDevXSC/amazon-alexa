@@ -241,14 +241,19 @@ main > .section > div {
   padding: 0 24px;
 }
 
+main > .section > div > .block:not(.carousel,.links) {
+  padding: 1rem 0;
+}
+
 main > .section:first-of-type {
   margin-top: 0;
   margin-bottom: 0;
 }
 
+
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 16px;
   }
 }
 
@@ -272,9 +277,13 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: 10px 0;
 }
 
 main .section.text-center {
   text-align: center;
+}
+
+main .section.border-bottom > div:last-of-type {
+  border-bottom: 1.5px solid #2f2f2f;
 }
