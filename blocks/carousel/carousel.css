@@ -79,6 +79,7 @@
 .carousel .carousel-slides .slide .slide-content p {
   font-size: 24px;
   margin: 0.5rem 0;
+  line-height: normal;
 }
 
 .carousel .carousel-slides .slide .slide-content a.button {

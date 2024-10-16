@@ -80,7 +80,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  line-height: 1.6;
+  line-height: 20px;
 }
 
 body.appear {
@@ -321,4 +321,15 @@ main .section.decorate-links p a:nth-child(2) {
   font-weight: 400;
   text-decoration: none;
   display: inline-block;
+}
+
+main .section.half-layout {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media (width <= 900px) {
+  main .section.half-layout {
+    width: 100%;
+  }
 }
