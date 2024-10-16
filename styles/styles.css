@@ -186,6 +186,11 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border: 2px solid transparent;
+  border-radius: 2.4em;
+  padding: 0.5em 1.2em;
+  background-color: var(--link-color);
+  color: var(--background-color);
 }
 
 a.button:hover,
@@ -266,6 +271,17 @@ main .section.links-container {
   header {
     height: 91px;
   }
+}
+
+main .section .default-content-wrapper a {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #000;
+}
+
+main .section .default-content-wrapper a:hover {
+  color: #e87825;
 }
 
 /* section metadata */
