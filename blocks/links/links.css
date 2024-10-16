@@ -33,6 +33,10 @@
   text-decoration: none;
 }
 
+.links .link-item.console-btn:hover {
+  border-bottom: none;
+}
+
 .links .link-item.console-btn a {
   color: #fff;
   background: #36f;
