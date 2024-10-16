@@ -5,9 +5,7 @@ export default function decorate(block) {
   [...children].forEach((child) => { 
     child.classList.add('link-item');
     const div = child.querySelector(':scope > div');
-
     const consoleLink = child.querySelector('a').title;
-    console.log("console: ", consoleLink);
 
     if (consoleLink.toLowerCase() === 'console') {
       child.classList.add('console-btn');
