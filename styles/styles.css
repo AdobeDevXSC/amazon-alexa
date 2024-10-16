@@ -181,7 +181,7 @@ button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  color: #000;
+  color: #0066C0;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -277,7 +277,7 @@ main .section .default-content-wrapper a {
   background-color: transparent;
   border: none;
   padding: 0;
-  color: #000;
+  color: #0066C0;
 }
 
 main .section .default-content-wrapper a:hover {
@@ -298,4 +298,27 @@ main .section.text-center {
 
 main .section.border-bottom > div:last-of-type {
   border-bottom: 1.5px solid #2f2f2f;
+}
+
+main .section.decorate-links p a:first-of-type {
+  color: #fff;
+  background: #36f;
+  padding: 0.65rem 1.5rem;
+  border-radius: .4rem;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+main .section.decorate-links p a:nth-child(2) {
+  color: #fff;
+  background: #31c4f3;
+  padding: 0.65rem 1.5rem;
+  border-radius: .4rem;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline-block;
 }
