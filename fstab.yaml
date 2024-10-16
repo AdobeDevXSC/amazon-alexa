@@ -1,6 +1,6 @@
 mountpoints:
-    /: https://drive.google.com/drive/folders/1Zzj9fp_z_pJU0CR4Pfsag8NZoaLB1Sp7
+    # /: https://drive.google.com/drive/folders/1Zzj9fp_z_pJU0CR4Pfsag8NZoaLB1Sp7
 
-    # url: "https://author-p130360-e1272151.adobeaemcloud.com/bin/franklin.delivery/adobe-rnd/aem-boilerplate-xwalk/main"
-    # type: "markup"
-    # suffix: ".html"
+    url: "https://author-p127526-e1367718.adobeaemcloud.com/bin/franklin.delivery/AdobeDevXSC/amazon-alexa/main"
+    type: "markup"
+    suffix: ".html"
