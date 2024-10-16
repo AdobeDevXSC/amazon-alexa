@@ -45,7 +45,7 @@
 .carousel .carousel-slides .slide .slide-bg-image img {
   height: 100%;
   width: 100%;
-  min-height: 340px;
+  min-height: 360px;
 }
 
 .carousel .carousel-slides .slide .slide-content-container {
@@ -68,7 +68,7 @@
   align-items: flex-start;
   justify-content: center;
   color: #fff;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 }
 
 .carousel .carousel-slides .slide .slide-content h2 {
@@ -202,7 +202,7 @@
 
 /* stylelint-disable-next-line no-descending-specificity */
 .carousel .carousel-navigation-buttons button {
-  border-radius: 8px;
+  border-radius: 50%;
   margin: 0;
   padding: 0;
   width: 2rem;

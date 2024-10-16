@@ -79,7 +79,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   line-height: 1.6;
 }
 
@@ -128,8 +128,8 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 code,
@@ -232,7 +232,7 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 main > .section > div {
@@ -243,11 +243,23 @@ main > .section > div {
 
 main > .section:first-of-type {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
+  }
+}
+
+main .section.links-container {
+  margin: 0;
+  background-color: #e6e6e6;
+}
+
+@media (width <= 900px) {
+  main .section.links-container {
+    display: none;
   }
 }
 
@@ -257,4 +269,8 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.text-center {
+  text-align: center;
 }

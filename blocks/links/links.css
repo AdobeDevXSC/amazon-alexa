@@ -1,0 +1,44 @@
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.links .link-item a {
+  cursor: pointer;
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  padding: 12px 0;
+  line-height: 32px;
+  font-family: 'AmazonEmber_Md';
+}
+
+.links .link-item:first-of-type {
+  border-bottom: 4px solid #000 !important;
+}
+
+.links .link-item:first-of-type a {
+  font-size: 20px;
+  font-family: 'AmazonEmber_Bd';
+}
+
+.links .link-item:hover {
+  border-bottom: 2px solid #000;
+}
+
+.links .link-item a:hover {
+  text-decoration: none;
+}
+
+.links .link-item.console-btn a {
+  color: #fff;
+  background: #36f;
+  padding: 8px 20px;
+  border-radius: .4rem;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: 'AmazonEmber_Lt';
+}
