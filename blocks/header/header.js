@@ -180,11 +180,6 @@ export default async function decorate(block) {
   const inputSearchEl = document.createElement('input');
   inputSearchEl.type = 'text';
   inputSearchEl.placeholder = 'Search Alexa Developer help';
-
-
-  console.log("inputContainer: ", inputContainer);
-  console.log("inputSearchEl: ", inputSearchEl);
-
   inputContainer.prepend(inputSearchEl);
 
   block.append(navWrapper);
