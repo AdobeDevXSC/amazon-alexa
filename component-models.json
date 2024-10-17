@@ -131,6 +131,16 @@
     ]
   },
   {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
