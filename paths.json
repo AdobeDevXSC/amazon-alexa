@@ -4,6 +4,9 @@
     "/content/amazon-alexa/configuration:/.helix/config.json",
     "/content/amazon-alexa/metadata:/metadata.json",
     "/content/amazon-alexa/spreadsheet:/spreadsheet.json",
-    "/content/dam/amazon-alexa/Amazon%20Alexa%20Images/:/Amazon%20Alexa%20Images/"
+    "/content/dam/amazon-alexa/amazon-alexa-images/:/amazon-alexa-images/"
+  ],
+  "includes": [
+    "/content/dam/amazon-alexa/amazon-alexa-images/"
   ]
 }
