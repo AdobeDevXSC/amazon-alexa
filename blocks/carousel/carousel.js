@@ -93,11 +93,19 @@ function createSlide(row, slideIndex, carouselId) {
 }
 
 async function fetchJson(link) {
-  const response = await fetch(link?.href);
+  const url = `https://author-p142507-e1463170.adobeaemcloud.com${link.title}.json`
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'text/html',
+    },
+    method: 'get',
+    credentials: 'include',
+  });
+
   if (response.ok) {
-      const jsonData = await response.json();
-      const data = jsonData?.data;
-      return data;
+    const jsonData = await response.json();
+    data = jsonData?.data;
+    return data;
   }
   return 'an error occurred';
 }
