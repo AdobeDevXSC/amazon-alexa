@@ -267,10 +267,6 @@ main .section.links-container {
   main .section.links-container {
     display: none;
   }
-
-  header {
-    height: 91px;
-  }
 }
 
 main .section .default-content-wrapper a {
