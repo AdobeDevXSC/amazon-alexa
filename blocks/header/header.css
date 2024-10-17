@@ -233,10 +233,13 @@ header .nav-brand .default-content-wrapper p:nth-child(3) span {
   background-color: #31455E;
   border-radius: 50%;
   padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header .nav-brand .default-content-wrapper p:nth-child(3) span img {
-  width: 24px;
+  width: 16px;
 }
 
 @media (width >= 900px) {
