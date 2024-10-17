@@ -93,7 +93,7 @@ function createSlide(row, slideIndex, carouselId) {
 }
 
 async function fetchJson(link) {
-  const url = `https://https://author-p127526-e1367718.adobeaemcloud.com${link.title}.json`
+  const url = `https://author-p127526-e1367718.adobeaemcloud.com${link.title}.json`
   const response = await fetch(url, {
     headers: {
       'Content-Type': 'text/html',
