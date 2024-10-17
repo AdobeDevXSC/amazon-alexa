@@ -156,8 +156,8 @@ export default async function decorate(block) {
       const cardData = await fetchJson(link);
 
       cardData.forEach((card, idx) => {
-          const optBackgroundImage = createOptimizedPicture(card.backgroundImage, card.title, false, [{ width: 1800 }]);
-          const optColumnImage = createOptimizedPicture(card.columnImage, card.title, false, [{ width: 640 }]);
+          const optBackgroundImage = createOptimizedPicture(`https://author-p127526-e1367718.adobeaemcloud.com${card.backgroundImage}`, card.title, false, [{ width: 1800 }]);
+          const optColumnImage = createOptimizedPicture(`https://author-p127526-e1367718.adobeaemcloud.com{card.columnImage}`, card.title, false, [{ width: 640 }]);
 
           const createdSlide = document.createElement('li');
           createdSlide.dataset.slideIndex = idx;
