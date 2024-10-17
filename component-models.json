@@ -221,7 +221,7 @@
     ]
   },
   {
-    "id": "links",
+    "id": "link-item",
     "fields": [
       {
         "component": "richtext",
