@@ -46,5 +46,11 @@
     "components": [
       "link-item"
     ]
+  },
+  {
+    "id": "link-item",
+    "components": [
+      "text"
+    ]
   }
 ]
