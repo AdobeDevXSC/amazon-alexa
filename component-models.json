@@ -172,7 +172,7 @@
     ]
   },
   {
-    "id": "carousel",
+    "id": "carousel-item",
     "fields": [
       {
         "component": "multiselect",
@@ -189,12 +189,7 @@
             "value": "yellow-cta"
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "carousel-item",
-    "fields": [
+      },
       {
         "component": "reference",
         "valueType": "string",
