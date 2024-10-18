@@ -175,9 +175,46 @@
     "id": "carousel",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "reference",
-        "label": "Reference"
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Card classes",
+        "description": "A List of cards classes",
+        "options": [
+          {
+            "name": "Blue-themed CTA",
+            "value": "blue-cta"
+          },
+          {
+            "name": "Yellow-themed CTA",
+            "value": "yellow-cta"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Column Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },
