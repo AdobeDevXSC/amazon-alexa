@@ -199,7 +199,7 @@
         "component": "multiselect",
         "name": "classes",
         "label": "Card classes",
-        "description": "A List of carousel-item classes",
+        "description": "A List of carousel item selectors",
         "options": [
           {
             "name": "Blue-themed CTA",
