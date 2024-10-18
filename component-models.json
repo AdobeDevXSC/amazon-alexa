@@ -106,6 +106,22 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Text Center",
+            "value": "text-center"
+          },
+          {
+            "name": "Border Bottom",
+            "value": "border-bottom"
+          },
+          {
+            "name": "Decorate Links",
+            "value": "decorate-links"
+          },
+          {
+            "name": "Half Layout",
+            "value": "half-layout"
           }
         ]
       }
