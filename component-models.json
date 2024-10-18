@@ -198,14 +198,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "background image",
         "label": "Background Image",
         "multi": false
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "column image",
         "label": "Column Image",
         "multi": false
       },
