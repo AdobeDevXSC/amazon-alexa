@@ -4,9 +4,5 @@
     "/content/amazon-alexa/configuration:/.helix/config.json",
     "/content/amazon-alexa/metadata:/metadata.json",
     "/content/amazon-alexa/spreadsheet:/spreadsheet.json",
-    "/content/dam/amazon-alexa/:/"
-  ],
-  "includes": [
-    "/content/dam/amazon-alexa/"
   ]
 }
