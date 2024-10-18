@@ -175,6 +175,22 @@
     "id": "carousel-item",
     "fields": [
       {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Card classes",
+        "description": "A List of carousel item selectors",
+        "options": [
+          {
+            "name": "Blue-themed CTA",
+            "value": "blue-cta"
+          },
+          {
+            "name": "Yellow-themed CTA",
+            "value": "yellow-cta"
+          }
+        ]
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "background image",
@@ -194,22 +210,6 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      },
-      {
-        "component": "multiselect",
-        "name": "classes",
-        "label": "Card classes",
-        "description": "A List of carousel item selectors",
-        "options": [
-          {
-            "name": "Blue-themed CTA",
-            "value": "blue-cta"
-          },
-          {
-            "name": "Yellow-themed CTA",
-            "value": "yellow-cta"
-          }
-        ]
       }
     ]
   },
