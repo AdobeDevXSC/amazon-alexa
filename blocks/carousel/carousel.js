@@ -1,7 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
-let data = [];
-
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
   const slideIndex = parseInt(slide.dataset.slideIndex, 10);
@@ -76,151 +72,109 @@ function bindEvents(block) {
 }
 
 function createSlide(row, slideIndex, carouselId) {
-  const slide = document.createElement('li');
-  slide.dataset.slideIndex = slideIndex;
-  slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
-  slide.classList.add('carousel-slide');
+    const slide = document.createElement('li');
+    slide.dataset.slideIndex = slideIndex;
+    slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
+    slide.classList.add('carousel-slide');
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-      column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
-      slide.append(column);
-  });
+    const outermostDiv = document.createElement('div');
+    outermostDiv.classList.add('slide');
 
-  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
-  if (labeledBy) {
-      slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
-  }
+    row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
+        let ctaColorSelector = '';
 
-  return slide;
-}
+        if (colIdx === 0) column.classList.add('slide-bg-image');
+        if (colIdx === 1) column.classList.add('slide-image');
+        if (colIdx === 2) column.classList.add('slide-content');
+        if (colIdx === 3) {
+            const textSelectorString = column.querySelector('p').textContent;
+            ctaColorSelector = textSelectorString.split(',')[1].trim();
 
-async function fetchJson(link) {
-  const url = `https://author-p127526-e1367718.adobeaemcloud.com${link.title}.json`
-  const response = await fetch(url, {
-    headers: {
-      'Content-Type': 'text/html',
-    },
-    method: 'get',
-    credentials: 'include',
-  });
+            const link = outermostDiv.querySelector('a');
+            link.classList.add(ctaColorSelector);
+        } else {
+            outermostDiv.append(column); // Append only if not removed
+        }
+    });
 
-  if (response.ok) {
-    const jsonData = await response.json();
-    data = jsonData?.data;
-    return data;
-  }
-  return 'an error occurred';
+    //add custom here
+    const slideContentContainer = document.createElement('div');
+    slideContentContainer.classList.add('slide-content-container');
+
+    const slideImg = outermostDiv.querySelector('.slide-image');
+    const slideContent = outermostDiv.querySelector('.slide-content');
+
+    outermostDiv.appendChild(slideContentContainer);
+    slideContentContainer.appendChild(slideContent);
+    slideContentContainer.appendChild(slideImg);
+  
+    slide.append(outermostDiv);
+
+    const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
+    if (labeledBy) {
+        slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+    }
+
+    return slide;
 }
 
 let carouselId = 0;
 export default async function decorate(block) {
-    console.log("carousel block: ", block);
-    
-//   carouselId += 1;
-//   const isJSONCarousel = block.querySelector('a');
+    carouselId += 1;
+    block.setAttribute('id', `carousel-${carouselId}`);
+    const rows = block.querySelectorAll(':scope > div');
+    const placeholders = {};
 
-//   block.setAttribute('id', `carousel-${carouselId}`);
-//   const rows = block.querySelectorAll(':scope > div');
-//   const placeholders = {};
+    block.setAttribute('role', 'region');
+    block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
 
-//   block.setAttribute('role', 'region');
-//   block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
+    const container = document.createElement('div');
+    container.classList.add('carousel-slides-container');
 
-//   const container = document.createElement('div');
-//   container.classList.add('carousel-slides-container');
+    const slidesWrapper = document.createElement('ul');
+    slidesWrapper.classList.add('carousel-slides');
+    block.prepend(slidesWrapper);
 
-//   const slidesWrapper = document.createElement('ul');
-//   slidesWrapper.classList.add('carousel-slides');
-//   block.prepend(slidesWrapper);
+    let slideIndicators;
+    const isSingleSlide = false; //hardcoded temporarily
+    if (!isSingleSlide) {
+        const slideIndicatorsNav = document.createElement('nav');
+        slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
+        slideIndicators = document.createElement('ol');
+        slideIndicators.classList.add('carousel-slide-indicators');
+        slideIndicatorsNav.append(slideIndicators);
+        block.append(slideIndicatorsNav);
 
-//   let slideIndicators;
-//   const isSingleSlide = false; //hardcoded temporarily
-//   if (!isSingleSlide) {
-//       const slideIndicatorsNav = document.createElement('nav');
-//       slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
-//       slideIndicators = document.createElement('ol');
-//       slideIndicators.classList.add('carousel-slide-indicators');
-//       slideIndicatorsNav.append(slideIndicators);
-//       block.append(slideIndicatorsNav);
+        const slideNavButtons = document.createElement('div');
+        slideNavButtons.classList.add('carousel-navigation-buttons');
+        slideNavButtons.innerHTML = `
+                <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+                <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
+            `;
 
-//       const slideNavButtons = document.createElement('div');
-//       slideNavButtons.classList.add('carousel-navigation-buttons');
-//       slideNavButtons.innerHTML = `
-//             <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
-//             <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
-//         `;
+        container.append(slideNavButtons);
+    }
 
-//       container.append(slideNavButtons);
-//   }
+    rows.forEach((row, idx) => {
+        const slide = createSlide(row, idx, carouselId);
+        console.log("slide: ", slide);
 
-//   if (isJSONCarousel) {
-//       const link = block.querySelector('a');
-//       const cardData = await fetchJson(link);
+        slidesWrapper.append(slide);
 
-//       cardData.forEach((card, idx) => {
-//           const optBackgroundImage = createOptimizedPicture(card.backgroundImage, card.title, false, [{ width: 1800 }]);
-//           const optColumnImage = createOptimizedPicture(card.columnImage, card.title, false, [{ width: 640 }]);
+        if (slideIndicators) {
+            const indicator = document.createElement('li');
+            indicator.classList.add('carousel-slide-indicator');
+            indicator.dataset.targetSlide = idx;
+            indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}</span></button>`;
+            slideIndicators.append(indicator);
+        }
+        row.remove();
+    });
 
-//           const createdSlide = document.createElement('li');
-//           createdSlide.dataset.slideIndex = idx;
-//           createdSlide.setAttribute('id', `carousel-${carouselId}-slide-${idx}`);
-//           createdSlide.classList.add('carousel-slide');
-          
-//           createdSlide.innerHTML = `
-//             <div class="slide">
-//                 <div class="slide-bg-image">
-//                     ${optBackgroundImage.outerHTML}
-//                 </div>
-//                 <div class="slide-content-container">
-//                     <div class="slide-content">
-//                         <h2>${card.title}</h2>
-//                         <p>${card.description}</p>
-//                         <a class="button ${card.ctaColor}" href="${card.ctaLink}" aria-label="${card.title}" title="${card.title}">${card.ctaTitle}</a>
-//                     </div>
-//                     <div class="slide-image">
-//                         ${optColumnImage.outerHTML}
-//                     </div>
-//                 </div>
-//             </div>
-//             `;
+    container.append(slidesWrapper);
+    block.prepend(container);
 
-//           const labeledBy = createdSlide.querySelector('h1, h2, h3, h4, h5, h6');
-//           if (labeledBy) {
-//               createdSlide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
-//           }
-
-//           slidesWrapper.append(createdSlide);
-
-//           if (slideIndicators) {
-//               const indicator = document.createElement('li');
-//               indicator.classList.add('carousel-slide-indicator');
-//               indicator.dataset.targetSlide = idx;
-//               indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${cardData.length}</span></button>`;
-//               slideIndicators.append(indicator);
-//           }
-//       })
-//   } else {
-//       rows.forEach((row, idx) => {
-//           const slide = createSlide(row, idx, carouselId);
-//           slidesWrapper.append(slide);
-
-//           if (slideIndicators) {
-//               const indicator = document.createElement('li');
-//               indicator.classList.add('carousel-slide-indicator');
-//               indicator.dataset.targetSlide = idx;
-//               indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}</span></button>`;
-//               slideIndicators.append(indicator);
-//           }
-//           row.remove();
-//       });
-//   }
-//   container.append(slidesWrapper);
-//   block.prepend(container);
-
-//   const divWithLink = isJSONCarousel.parentElement.parentElement.parentElement;
-//   divWithLink.remove();
-
-//   if (!isSingleSlide) {
-//       bindEvents(block);
-//   }
+    if (!isSingleSlide) {
+        bindEvents(block);
+    }
 }

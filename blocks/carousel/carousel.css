@@ -82,6 +82,10 @@
   line-height: normal;
 }
 
+.carousel .carousel-slides .slide .slide-content p.button-container a {
+  font-size: 18px;
+}
+
 .carousel .carousel-slides .slide .slide-content a.button {
   margin-top: 1.75rem;
 }

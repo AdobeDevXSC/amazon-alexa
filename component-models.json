@@ -202,12 +202,12 @@
         "description": "A List of carousel item selectors",
         "options": [
           {
-            "name": "Blue-themed CTA",
-            "value": "blue-cta"
+            "name": "Primary CTA",
+            "value": "primary"
           },
           {
-            "name": "Yellow-themed CTA",
-            "value": "yellow-cta"
+            "name": "Secondary CTA",
+            "value": "secondary"
           }
         ]
       }
