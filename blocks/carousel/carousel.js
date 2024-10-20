@@ -81,20 +81,20 @@ function updateActiveSlide(slide) {
       outermostDiv.classList.add('slide');
   
       row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-          let ctaColorSelector = '';
+        //   let ctaColorSelector = '';
   
           if (colIdx === 0) column.classList.add('slide-bg-image');
           if (colIdx === 1) column.classList.add('slide-image');
           if (colIdx === 2) column.classList.add('slide-content');
-          if (colIdx === 3) {
-              const textSelectorString = column.querySelector('p').textContent;
-              ctaColorSelector = textSelectorString.split(',')[1].trim();
+        //   if (colIdx === 3) {
+        //       const textSelectorString = column.querySelector('p').textContent;
+        //       ctaColorSelector = textSelectorString.split(',')[1].trim();
   
-              const link = outermostDiv.querySelector('a');
-              link.classList.add(ctaColorSelector);
-          } else {
-              outermostDiv.append(column); // Append only if not removed
-          }
+        //       const link = outermostDiv.querySelector('a');
+        //       link.classList.add(ctaColorSelector);
+        //   } else {
+        //       outermostDiv.append(column); // Append only if not removed
+        //   }
       });
   
       //add custom here
