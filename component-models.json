@@ -194,6 +194,22 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Card classes",
+        "description": "A List of carousel item selectors",
+        "options": [
+          {
+            "name": "Primary CTA",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary CTA",
+            "value": "secondary"
+          }
+        ]
       }
     ]
   },
