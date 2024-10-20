@@ -26,7 +26,7 @@ function updateActiveSlide(slide) {
       } else {
           button.setAttribute('disabled', 'true');
       }
-      moveInstrumentation(indicator, button); // Instrumentation
+    //   moveInstrumentation(indicator, button); // Instrumentation
   });
 }
 
@@ -115,7 +115,7 @@ function createSlide(row, slideIndex, carouselId) {
     slide.append(outermostDiv);
 
     // Apply moveInstrumentation
-    moveInstrumentation(row, slide);
+    // moveInstrumentation(row, slide);
 
     const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
     if (labeledBy) {
@@ -172,7 +172,7 @@ export default async function decorate(block) {
             indicator.classList.add('carousel-slide-indicator');
             indicator.dataset.targetSlide = idx;
             indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}</span></button>`;
-            moveInstrumentation(slide, indicator); // Instrumentation
+            // moveInstrumentation(slide, indicator); // Instrumentation
             slideIndicators.append(indicator);
         }
         row.remove();
