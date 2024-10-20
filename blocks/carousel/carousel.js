@@ -95,6 +95,7 @@ function updateActiveSlide(slide) {
         //   } else {
         //       outermostDiv.append(column); // Append only if not removed
         //   }
+        outermostDiv.append(column); // Append only if not removed
       });
   
       //add custom here
