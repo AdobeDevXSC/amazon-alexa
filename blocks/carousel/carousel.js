@@ -1,3 +1,5 @@
+import { moveInstrumentation } from "../../scripts/scripts";
+
 function updateActiveSlide(slide) {
     const block = slide.closest('.carousel');
     const slideIndex = parseInt(slide.dataset.slideIndex, 10);
@@ -109,6 +111,7 @@ function updateActiveSlide(slide) {
       slideContentContainer.appendChild(slideImg);
     
       slide.append(outermostDiv);
+      moveInstrumentation(slide, outermostDiv);
   
       const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
       if (labeledBy) {
