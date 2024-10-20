@@ -1,3 +1,5 @@
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
   const slideIndex = parseInt(slide.dataset.slideIndex, 10);
@@ -79,6 +81,8 @@ function createSlide(row, slideIndex, carouselId) {
 
     const outermostDiv = document.createElement('div');
     outermostDiv.classList.add('slide');
+
+    moveInstrumentation(row);
 
     row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
         let ctaColorSelector = '';
