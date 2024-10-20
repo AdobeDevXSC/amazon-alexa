@@ -161,7 +161,7 @@ export default async function decorate(block) {
 
     rows.forEach((row, idx) => {
         const slide = createSlide(row, idx, carouselId);
-        console.log("slide: ", slide);
+        // moveInstrumentation(slide);
 
         slidesWrapper.append(slide);
 
