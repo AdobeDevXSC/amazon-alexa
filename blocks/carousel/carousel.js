@@ -20,11 +20,13 @@ function updateActiveSlide(slide) {
 
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
+      const button = indicator.querySelector('button');
       if (idx !== slideIndex) {
-          indicator.querySelector('button').removeAttribute('disabled');
+          button.removeAttribute('disabled');
       } else {
-          indicator.querySelector('button').setAttribute('disabled', 'true');
+          button.setAttribute('disabled', 'true');
       }
+      moveInstrumentation(indicator, button); // Instrumentation
   });
 }
 
@@ -82,8 +84,6 @@ function createSlide(row, slideIndex, carouselId) {
     const outermostDiv = document.createElement('div');
     outermostDiv.classList.add('slide');
 
-    moveInstrumentation(row);
-
     row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
         let ctaColorSelector = '';
 
@@ -101,7 +101,7 @@ function createSlide(row, slideIndex, carouselId) {
         }
     });
 
-    //add custom here
+    // Add custom here
     const slideContentContainer = document.createElement('div');
     slideContentContainer.classList.add('slide-content-container');
 
@@ -113,6 +113,9 @@ function createSlide(row, slideIndex, carouselId) {
     slideContentContainer.appendChild(slideImg);
   
     slide.append(outermostDiv);
+
+    // Apply moveInstrumentation
+    moveInstrumentation(row, slide);
 
     const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
     if (labeledBy) {
@@ -140,7 +143,7 @@ export default async function decorate(block) {
     block.prepend(slidesWrapper);
 
     let slideIndicators;
-    const isSingleSlide = false; //hardcoded temporarily
+    const isSingleSlide = false; // Hardcoded temporarily
     if (!isSingleSlide) {
         const slideIndicatorsNav = document.createElement('nav');
         slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
@@ -152,7 +155,7 @@ export default async function decorate(block) {
         const slideNavButtons = document.createElement('div');
         slideNavButtons.classList.add('carousel-navigation-buttons');
         slideNavButtons.innerHTML = `
-                <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+                <button type="button" class="slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
                 <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
             `;
 
@@ -161,7 +164,6 @@ export default async function decorate(block) {
 
     rows.forEach((row, idx) => {
         const slide = createSlide(row, idx, carouselId);
-        // moveInstrumentation(slide);
 
         slidesWrapper.append(slide);
 
@@ -170,6 +172,7 @@ export default async function decorate(block) {
             indicator.classList.add('carousel-slide-indicator');
             indicator.dataset.targetSlide = idx;
             indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}</span></button>`;
+            moveInstrumentation(slide, indicator); // Instrumentation
             slideIndicators.append(indicator);
         }
         row.remove();
