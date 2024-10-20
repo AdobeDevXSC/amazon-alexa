@@ -92,10 +92,15 @@ function createSlide(row, slideIndex, carouselId) {
         if (colIdx === 2) column.classList.add('slide-content');
         if (colIdx === 3) {
             const textSelectorString = column.querySelector('p').textContent;
-            ctaColorSelector = textSelectorString.split(',')[1].trim();
+            ctaColorSelector = textSelectorString.split(',');
 
-            const link = outermostDiv.querySelector('a');
-            link.classList.add(ctaColorSelector);
+            if (ctaColorSelector[1]) {
+                ctaColorSelector = ctaColorSelector[1].trim();
+
+                const link = outermostDiv.querySelector('a');
+                link.classList.add(ctaColorSelector);
+            }
+
         } else {
             outermostDiv.append(column); // Append only if not removed
         }
