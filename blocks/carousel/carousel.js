@@ -91,7 +91,7 @@ function updateActiveSlide(slide) {
           if (colIdx === 2) column.classList.add('slide-content');
           if (colIdx === 3) {
               const textSelectorString = column.querySelector('p').textContent;
-              ctaColorSelector = textSelectorString.split(',')[1].trim();
+              ctaColorSelector = textSelectorString?.split(',')[1]?.trim() || 'primary';
   
               const link = outermostDiv.querySelector('a');
               link.classList.add(ctaColorSelector);
