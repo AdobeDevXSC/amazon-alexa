@@ -94,7 +94,7 @@ function updateActiveSlide(slide) {
               ctaColorSelector = textSelectorString?.split(',')[1]?.trim() || 'primary';
   
               const link = outermostDiv.querySelector('a');
-              link.classList.add(ctaColorSelector);
+              if (link) link.classList.add(ctaColorSelector);
           } else {
               outermostDiv.append(column); // Append only if not removed
           }
@@ -159,9 +159,7 @@ function updateActiveSlide(slide) {
       }
   
       rows.forEach((row, idx) => {
-          const slide = createSlide(row, idx, carouselId);
-          console.log("slide: ", slide);
-  
+          const slide = createSlide(row, idx, carouselId);  
           slidesWrapper.append(slide);
   
           if (slideIndicators) {
