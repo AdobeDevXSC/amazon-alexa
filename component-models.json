@@ -199,7 +199,7 @@
         "component": "multiselect",
         "name": "classes",
         "label": "Card classes",
-        "description": "A List of carousel item selectors",
+        "description": "A list of CTA button types",
         "options": [
           {
             "name": "Primary CTA",
