@@ -3,5 +3,3 @@ mountpoints:
         url: "https://author-p127526-e1367718.adobeaemcloud.com/bin/franklin.delivery/AdobeDevXSC/amazon-alexa/main"
         type: "markup"
         suffix: ".html"
-
-    # /: https://drive.google.com/drive/folders/1Zzj9fp_z_pJU0CR4Pfsag8NZoaLB1Sp7
