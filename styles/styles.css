@@ -88,7 +88,7 @@ body.appear {
 }
 
 header {
-  /* height: var(--nav-height); */
+  height: 90px;
 }
 
 header .header,
@@ -309,7 +309,7 @@ main .section.decorate-links p a:first-of-type {
 }
 
 main .section.decorate-links p a:nth-child(2) {
-  color: #fff;
+  color: #002E4D;
   background: #31c4f3;
   padding: 0.65rem 1.5rem;
   border-radius: .4rem;

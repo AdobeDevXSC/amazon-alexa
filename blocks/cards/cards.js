@@ -16,6 +16,12 @@ export default function decorate(block) {
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+
+    // Add width and height as attributes
+    const image = optimizedPic.querySelector('img');
+    image.setAttribute('width', '750');
+    image.setAttribute('height', '60');
+    
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
