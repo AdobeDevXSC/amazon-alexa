@@ -75,7 +75,7 @@ function updateActiveSlide(slide) {
   
   function createSlide(row, slideIndex, carouselId) {
       const slide = document.createElement('li');
-      moveInstrumentation(row, li);
+      moveInstrumentation(row, slide);
       slide.dataset.slideIndex = slideIndex;
       slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
       slide.classList.add('carousel-slide');
